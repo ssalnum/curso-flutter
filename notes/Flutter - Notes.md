@@ -1,0 +1,2 @@
+- A porta de entrada de uma aplicação Flutter é a função `main()`;
+	- É a função essencial para o funcionamento da aplicação;

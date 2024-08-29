@@ -1,0 +1,1 @@
+[Qual a diferença entre Programação Concorrente e Programação Paralela - Stack Overflow](https://stackoverflow.com/questions/1897993/what-is-the-difference-between-concurrent-programming-and-parallel-programming)
