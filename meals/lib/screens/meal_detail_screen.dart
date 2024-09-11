@@ -3,7 +3,14 @@ import 'package:flutter/material.dart';
 import '../models/meal.dart';
 
 class MealDetailScreen extends StatelessWidget {
-  const MealDetailScreen({super.key});
+  const MealDetailScreen({
+    super.key,
+    required this.onToggleFavorite,
+    required this.isFavoriteMeal,
+  });
+
+  final Function(Meal) onToggleFavorite;
+  final Function(Meal) isFavoriteMeal;
 
   Widget _createSectionTitle(BuildContext context, String title) {
     return Container(
@@ -108,11 +115,9 @@ class MealDetailScreen extends StatelessWidget {
         hoverColor: Theme.of(context).primaryColorLight,
         splashColor: Theme.of(context).primaryColorDark,
         foregroundColor: Colors.black87,
-        child: const Icon(
-          Icons.star,
-        ),
+        child: Icon(isFavoriteMeal(meal) ? Icons.star : Icons.star_border),
         onPressed: () {
-          Navigator.of(context).pop();
+          onToggleFavorite(meal);
         },
       ),
     );
