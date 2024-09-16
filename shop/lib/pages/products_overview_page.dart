@@ -22,13 +22,26 @@ class ProductsOverviewPage extends StatefulWidget {
 }
 
 class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
+  bool _isLoading = true;
+
+  Future<void> _refreshProducts(BuildContext context) {
+    return Provider.of<ProductList>(
+      context,
+      listen: false,
+    ).loadProducts();
+  }
+
   @override
   void initState() {
     super.initState();
     Provider.of<ProductList>(
       context,
       listen: false,
-    ).loadProducts();
+    ).loadProducts().then((value) {
+      setState(() {
+        _isLoading = false;
+      });
+    });
   }
 
   @override
@@ -78,7 +91,14 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
         elevation: 4,
         shadowColor: Colors.grey,
       ),
-      body: const ProductGrid(),
+      body: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : RefreshIndicator(
+              onRefresh: () => _refreshProducts(context),
+              child: const ProductGrid(),
+            ),
       drawer: const AppDrawer(),
     );
   }
