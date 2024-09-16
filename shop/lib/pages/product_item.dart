@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/utils/app_routes.dart';
@@ -14,6 +16,8 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final msg = ScaffoldMessenger.of(context);
+
     return Card(
       child: ListTile(
         contentPadding: const EdgeInsets.only(
@@ -48,22 +52,30 @@ class ProductItem extends StatelessWidget {
                       content: const Text('Quer remover o item do carrinho?'),
                       actions: [
                         TextButton(
-                          onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () => Navigator.of(context).pop(false),
                           child: const Text('Não'),
                         ),
                         TextButton(
-                          onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () => Navigator.of(context).pop(true),
                           child: const Text('Sim'),
                         ),
                       ],
                     ),
-                  ).then((value) {
+                  ).then((value) async {
                     if (value ?? false) {
-                      Provider.of<ProductList>(
-                        // ignore: use_build_context_synchronously
-                        context,
-                        listen: false,
-                      ).removeProduct(product);
+                      try {
+                        await Provider.of<ProductList>(
+                          // ignore: use_build_context_synchronously
+                          context,
+                          listen: false,
+                        ).removeProduct(product);
+                      } on HttpException catch (error) {
+                        msg.showSnackBar(
+                          SnackBar(
+                            content: Text(error.toString()),
+                          ),
+                        );
+                      }
                     }
                   });
                 },
