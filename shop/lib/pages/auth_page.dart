@@ -25,46 +25,50 @@ class AuthPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Container(
-                //   margin: const EdgeInsets.only(
-                //     bottom: 20,
-                //   ),
-                //   padding: const EdgeInsets.symmetric(
-                //     vertical: 10,
-                //     horizontal: 70,
-                //   ),
-                //   // Cascade Operator
-                //   width: deviceSize.width * 0.9,
-                //   transform: Matrix4.rotationZ(-8 * pi / 180)..translate(-10.0),
-                //   decoration: BoxDecoration(
-                //     borderRadius: BorderRadius.circular(20),
-                //     color: Colors.deepOrange.shade900,
-                //     boxShadow: const [
-                //       BoxShadow(
-                //         blurRadius: 8,
-                //         color: Colors.black26,
-                //         offset: Offset(0, 2),
-                //       ),
-                //     ],
-                //   ),
-                //   child: const Text(
-                //     'Minha Loja',
-                //     style: TextStyle(
-                //       fontSize: 45,
-                //       fontFamily: 'Anton',
-                //       fontWeight: FontWeight.w900,
-                //       color: Colors.white,
-                //     ),
-                //   ),
-                // ),
-                AuthForm(),
-              ],
+          const Center(
+            child: SingleChildScrollView(
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Container(
+                    //   margin: const EdgeInsets.only(
+                    //     bottom: 20,
+                    //   ),
+                    //   padding: const EdgeInsets.symmetric(
+                    //     vertical: 10,
+                    //     horizontal: 70,
+                    //   ),
+                    //   // Cascade Operator
+                    //   width: deviceSize.width * 0.9,
+                    //   transform: Matrix4.rotationZ(-8 * pi / 180)..translate(-10.0),
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(20),
+                    //     color: Colors.deepOrange.shade900,
+                    //     boxShadow: const [
+                    //       BoxShadow(
+                    //         blurRadius: 8,
+                    //         color: Colors.black26,
+                    //         offset: Offset(0, 2),
+                    //       ),
+                    //     ],
+                    //   ),
+                    //   child: const Text(
+                    //     'Minha Loja',
+                    //     style: TextStyle(
+                    //       fontSize: 45,
+                    //       fontFamily: 'Anton',
+                    //       fontWeight: FontWeight.w900,
+                    //       color: Colors.white,
+                    //     ),
+                    //   ),
+                    // ),
+                    AuthForm(),
+                  ],
+                ),
+              ),
             ),
           ),
         ],

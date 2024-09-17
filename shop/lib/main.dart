@@ -9,6 +9,7 @@ import 'package:shop/pages/auth_or_home_page.dart';
 import 'package:shop/pages/cart_page.dart';
 import 'package:shop/pages/orders_page.dart';
 import 'package:shop/pages/product_form_page.dart';
+import 'package:shop/utils/custom_route.dart';
 
 import './pages/product_detail_page.dart';
 import 'pages/product_page.dart';
@@ -97,6 +98,11 @@ class MainApp extends StatelessWidget {
             style: ButtonStyle(
               foregroundColor: WidgetStatePropertyAll<Color>(Colors.purple),
             ),
+          ),
+          pageTransitionsTheme: PageTransitionsTheme(
+            builders: {
+              TargetPlatform.android: CustomPageTransitionBuilder(),
+            },
           ),
         ),
         routes: {
