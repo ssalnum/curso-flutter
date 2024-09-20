@@ -22,6 +22,14 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
     _pickedImage = pickedImage;
   }
 
+  bool _submitForm() {
+    if (_titleController.text.isEmpty ||
+        _pickedImage == null ||
+        _pickedPosition == null) {
+      return;
+    }
+  }
+
   void _submitForm() {
     if (_titleController.text.isEmpty || _pickedImage == null) {
       return;
